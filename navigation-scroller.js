@@ -30,12 +30,11 @@
 
             if ( attributeForFindTargetElement !== null && attributeForFindTargetElement !== '' ) {
                 attributeForFindTargetElement = attributeForFindTargetElement.replace( /^#/, '' );
+                targetElement = $('[' + settings.targetElementAttribute + '="' + attributeForFindTargetElement + '"]');
             }
-
-            targetElement = $('[' + settings.targetElementAttribute + '="' + attributeForFindTargetElement + '"]');
         }
 
-        if(targetElement.length > 0) {
+        if($.type(targetElement) === 'object' && targetElement.length > 0) {
             targetElement = targetElement.first();
             if(settings.updateHistory === true) {
                 targetAttributeValue = targetElement.attr(settings.targetElementAttribute);
